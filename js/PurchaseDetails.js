@@ -5,40 +5,36 @@ if(tmp=rs)return tmp[2];
 return "没有这个参数";
 }
 var ticketId=GetQueryString("ticketId");
-alert("车票订单ID："+ticketId);
-
+console.log("车票订单ID："+ticketId);
+$(function(){
+	console.log("加载完成");
+});
 var curPage;        //当前页数
 var totalItem;      //总记录数
-var pageSize;       //每一页记录数
-var totalPage=7;      //总页数
+var totalPage;      //总页数
  
 //获取分页数据
-function $(id){
-	return document.getElementById(id);
-}     
 function turnPage(page)
 {
   $.ajax({
 	type: 'POST',
 	url: commentDataUrl,     //这里是请求的后台地址，自己定义
-	data: {'pageNum':page,'ticketId':ticketId},
+	data: {'ticketId':ticketId,'pageNum':page,},
 	dataType: 'json',
 	beforeSend: function() {
 	  $("#data-area").append("加载中...");
 	},
 	success: function(json) {
 	  $("#data-area").empty();       //移除原来的分页数据
+	  var data_content=json.PurchaseDetails;
 	  totalItem = json.totalItem;
-	  pageSize = json.pageSize;
-	  curPage = page;
-	  totalPage = json.totalPage;
-	  var data_content = json.data_content;
+	  curPage = json.page;
+	  totalPage = parseInt(totalItem/8)+1;
 	  var data_html = "";
 	  $.each(data_content,function(index,array) {     //添加新的分页数据（数据的显示样式根据自己页面来设置，这里只是一个简单的列表）
-		data_html += "<div class='OnTheTop'><table><tr><td>"+array['name']+"</td>"+"<td>"+array['phone']+"</td>"+"<td>"+array['price']+"</td>"+"<td>"+array['ticketNum']+"</td>"+"<td>"+array['startTime']+"</td></tr></table></div>";
+		data_html += "<div class='containerPurchase'><table><tr><td>"+array['name']+"</td>"+"<td>"+array['phone']+"</td>"+"<td>"+array['price']+"</td>"+"<td>"+array['ticketNum']+"</td>"+"<td>"+array['startTime']+"</td></tr></table></div>";
 	  });
- 
-	  $("#data-area").innerHTML=data_html;
+	  $("#data-area").append(data_html);
 	},
 	complete: function() {    //添加分页按钮栏
 	  getPageBar();
@@ -85,7 +81,7 @@ function getPageBar()
 	}
   }
   pageBar += "</ul>";
-  $('pageBar').innerHTML=pageBar;
+  document.getElementById('pageBar').innerHTML=pageBar;
 }
 //页面加载时初始化分页
 turnPage(1);
@@ -94,4 +90,17 @@ getPageBar()
 function turnPage(page){
 	curPage=page;
 	getPageBar();
+	$("#data-area").empty();       //移除原来的分页数据
+	var json = {"PurchaseDetails":[
+	{"name":"肖奈","phone":"13045612312","price":"120","name":"肖奈","ticketNum":"3","startTime":"2019-08-12"},],"totalItem":"10","page":"1"
+	};  //测试数据
+	var data_content=json.PurchaseDetails;
+	totalItem = json.totalItem;
+	curPage = json.page;
+	totalPage = parseInt(totalItem/8)+1;
+	var data_html = "";
+	$.each(data_content,function(index,array) {     //添加新的分页数据（数据的显示样式根据自己页面来设置，这里只是一个简单的列表）
+		data_html += "<div class='containerPurchase'><table><tr><td>"+array['name']+"</td>"+"<td>"+array['phone']+"</td>"+"<td>"+array['price']+"</td>"+"<td>"+array['ticketNum']+"</td>"+"<td>"+array['startTime']+"</td></tr></table></div>";
+	  });
+	$("#data-area").append(data_html);
 };

@@ -1,17 +1,14 @@
 var curPage;        //当前页数
 var totalItem;      //总记录数
-var pageSize;       //每一页记录数
-var totalPage=7;      //总页数
+var totalPage;      //总页数
 
 var curPageSecond;        //当前页数
 var totalItemSecond;      //总记录数
-var pageSizeSecond;       //每一页记录数
-var totalPageSecond=9;      //总页数
+var totalPageSecond;      //总页数
 //获取分页数据
-function $(id){
-	return document.getElementById(id);
-}
-
+$(function(){
+	console.log("加载完成");
+});
 function turnPage(page)
 {
   $.ajax({
@@ -24,11 +21,10 @@ function turnPage(page)
 	},
 	success: function(json) {
 	  $("#data-area").empty();       //移除原来的分页数据
+	  var data_content=json.TicketManagement;
 	  totalItem = json.totalItem;
-	  pageSize = json.pageSize;
-	  curPage = page;
-	  totalPage = json.totalPage;
-	  var data_content = json.data_content;
+	  curPage = json.page;
+	  totalPage = parseInt(totalItem/4)+1;
 	  var data_html = "";
 	  $.each(data_content,function(index,array) {     //添加新的分页数据（数据的显示样式根据自己页面来设置，这里只是一个简单的列表）
 		if(array['type']==1){
@@ -39,8 +35,7 @@ function turnPage(page)
 		}
 		data_html += "<div class='Shelf'><table><tr><td>"+array['departurePlace']+"</td>"+"<td>"+array['destination']+"</td>"+"<td>"+array['departureTime']+"</td>"+"<td>"+array['seatSurplus']+"</td>"+"<td>"+array['price']+"</td>"+"<td>"+array['type']+"</td><td><a href='PurchaseDetails.html?ticketId="+array['ticketId']+" '>详情</a></td><td><a href='javascript:ShelvesSubmit("+array['ticketId']+")'>下架</a></td></tr></table></div>";
 	  });
- 
-	  $("#data-area").innerHTML=data_html;
+	 $("#data-area").append(data_html);
 	},
 	complete: function() {    //添加分页按钮栏
 	  getPageBar();
@@ -87,7 +82,7 @@ function getPageBar()
 	}
   }
   pageBar += "</ul>";
-  $('pageBar').innerHTML=pageBar;
+  document.getElementById('pageBar').innerHTML=pageBar;
 }
 
 
@@ -104,11 +99,10 @@ function turnPageSecond(page)
 	},
 	success: function(json) {
 	  $("#data-areaSecond").empty();       //移除原来的分页数据
+	  var data_content=json.offTheShelf;
 	  totalItemSecond = json.totalItem;
-	  pageSizeSecond = json.pageSize;
-	  curPageSecond = page;
-	  totalPageSecond = json.totalPage;
-	  var data_content = json.data_content;
+	  curPageSecond  = json.page;
+	  totalPageSecond  = parseInt(totalItem/3)+1;
 	  var data_html = "";
 	  $.each(data_content,function(index,array) {     //添加新的分页数据（数据的显示样式根据自己页面来设置，这里只是一个简单的
 		if(array['type']==1){
@@ -120,7 +114,7 @@ function turnPageSecond(page)
 		data_html += "<div class='Shelf'><table><tr><td>"+array['departurePlace']+"</td>"+"<td>"+array['destination']+"</td>"+"<td>"+array['departureTime']+"</td>"+"<td>"+array['seatSurplus']+"</td>"+"<td>"+array['price']+"</td>"+"<td>"+array['type']+"</td><td><a href='PurchaseDetails.html?ticketId="+array['ticketId']+" '>详情</a></td><td>已下架</td></tr></table></div>";
 	  });
  
-	  $("#data-areaSecond").innerHTML=data_html;
+	$("#data-areaSecond").append(data_html);
 	},
 	complete: function() {    //添加分页按钮栏
 	  getPageBarSecond();
@@ -166,7 +160,7 @@ function getPageBarSecond()
 	}
   }
   pageBar += "</ul>";
-  $('pageBarSecond').innerHTML=pageBar;
+  document.getElementById('pageBarSecond').innerHTML=pageBar;
 }
 //页面加载时初始化分页
 function PurchaseDetails(ticketId){
@@ -197,13 +191,53 @@ function ShelvesSubmit(ticketId){
 	}
 }
 //接上服务器后删掉
-getPageBar()
-function turnPage(page){
+getPageBar();
+function turnPage(page){ 
+	$("#data-area").empty();       //移除原来的分页数据
 	curPage=page;
 	getPageBar();
+	var json = {"TicketManagement":[
+	{"departurePlace":"广金","destination":"广金","departureTime":"2019-07-10","seatSurplus":"23","phone":"13045612312","price":"150","type":"2","ticketId":"123132"},
+	],"totalItem":"10","page":"1"
+	};  //测试数据
+	var data_content=json.TicketManagement;
+	totalItem = json.totalItem;
+	curPage = json.page;
+	totalPage = parseInt(totalItem/4)+1;
+	var data_html = "";
+	$.each(data_content,function(index,array) {     //添加新的分页数据（数据的显示样式根据自己页面来设置，这里只是一个简单的列表）
+		if(array['type']==1){
+			array['type']="正在售卖"
+		}
+		if(array['type']==2){
+			array['type']="预售"
+		}
+	data_html += "<div class='Shelf'><table><tr><td>"+array['departurePlace']+"</td>"+"<td>"+array['destination']+"</td>"+"<td>"+array['departureTime']+"</td>"+"<td>"+array['seatSurplus']+"</td>"+"<td>"+array['price']+"</td>"+"<td>"+array['type']+"</td><td><a href='PurchaseDetails.html?ticketId="+array['ticketId']+" '>详情</a></td><td><a href='javascript:ShelvesSubmit("+array['ticketId']+")'>下架</a></td></tr></table></div>";
+	  });
+	$("#data-area").append(data_html);
 };
-getPageBarSecond()
+getPageBarSecond();
 function turnPageSecond(pageSecond){
+	 $("#data-areaSecond").empty();       //移除原来的分页数据
 	curPageSecond=pageSecond;
 	getPageBarSecond();
+	var json = {"offTheShelf":[
+	{"departurePlace":"广金","destination":"广金","departureTime":"2019-07-10","seatSurplus":"23","phone":"13045612312","price":"150","type":"1","ticketId":"123132"},
+	],"totalItem":"10","page":"1"
+	};  //测试数据
+	var data_content=json.offTheShelf;
+	totalItemSecond = json.totalItem;
+	curPageSecond  = json.page;
+	totalPageSecond  = parseInt(totalItem/3)+1;
+	var data_html = "";
+	$.each(data_content,function(index,array) {     //添加新的分页数据（数据的显示样式根据自己页面来设置，这里只是一个简单的列表）
+		if(array['type']==1){
+			array['type']="售卖"
+		}
+		if(array['type']==2){
+			array['type']="预售"
+		}
+	data_html += "<div class='Shelf'><table><tr><td>"+array['departurePlace']+"</td>"+"<td>"+array['destination']+"</td>"+"<td>"+array['departureTime']+"</td>"+"<td>"+array['seatSurplus']+"</td>"+"<td>"+array['price']+"</td>"+"<td>"+array['type']+"</td><td><a href='PurchaseDetails.html?ticketId="+array['ticketId']+" '>详情</a></td><td>已下架</td></tr></table></div>";
+	  });
+	$("#data-areaSecond").append(data_html);
 };

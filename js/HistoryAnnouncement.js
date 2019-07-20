@@ -1,11 +1,10 @@
 var curPage;        //当前页数
 var totalItem;      //总记录数
-var pageSize;       //每一页记录数
-var totalPage=7;      //总页数
+var totalPage;      //总页数
 //获取分页数据
-function $(id){
-	return document.getElementById(id);
-}     
+$(function(){
+	console.log("加载完成");
+});
 function turnPage(page)
 {
   $.ajax({
@@ -18,16 +17,21 @@ function turnPage(page)
 	},
 	success: function(json) {
 	  $("#data-area").empty();       //移除原来的分页数据
+	  var data_content = json.HistoryAnnouncement;
 	  totalItem = json.totalItem;
-	  pageSize = json.pageSize;
-	  curPage = page;
-	  totalPage = json.totalPage;
-	  var data_content = json.data_content;
+	  curPage = json.page;
+   	  totalPage = totalItem/7+1;
 	  var data_html = "";
 	  $.each(data_content,function(index,array) {     //添加新的分页数据（数据的显示样式根据自己页面来设置，这里只是一个简单的列表）
-		data_html += "<table><tr><td  colspan='6'>"+array['announcement']+"</td><td>"+array['type']+"</td><td>"+array['time']+"</td></tr></table>";
+		 if(array['type']==1){
+			array['type']="小程序"
+		}
+		if(array['type']==2){
+			array['type']="商家"
+		}
+		data_html += "<table><tr><td  colspan='6'>"+array['announcement']+"</td><td>"+array['type']+"</td><td>"+array['underTime']+"</td></tr></table>";
 	  });
-	  $("#data-area").innerHTML=data_html;
+	  $("#data-area").append(data_html);
 	},
 	complete: function() {    //添加分页按钮栏
 	  getPageBar();
@@ -74,7 +78,7 @@ function getPageBar()
 	}
   }
   pageBar += "</ul>";
-  $('pageBar').innerHTML=pageBar;
+  document.getElementById('pageBar').innerHTML=pageBar;
 }
 //页面加载时初始化分页
 turnPage(1);
@@ -83,4 +87,24 @@ getPageBar()
 function turnPage(page){
 	curPage=page;
 	getPageBar();
+	var json = {"HistoryAnnouncement":[
+	{"announcement":"广金","type":"1","underTime":"2019-07-10"},{"announcement":"广金肇庆","type":"2","underTime":"2019-02-10"}
+	],"totalItem":"50","page":"1"
+	};
+    $("#data-area").empty();       //移除原来的分页数据
+	var data_content = json.HistoryAnnouncement;
+	totalItem = json.totalItem;
+	curPage = json.page;
+   	totalPage = parseInt(totalItem/7)+1;
+	var data_html = "";
+	$.each(data_content,function(index,array) {     //添加新的分页数据（数据的显示样式根据自己页面来设置，这里只是一个简单的列表）
+		 if(array['type']==1){
+			array['type']="小程序"
+		}
+		if(array['type']==2){
+			array['type']="商家"
+		}
+		data_html += "<table><tr><td  colspan='6'>"+array['announcement']+"</td><td>"+array['type']+"</td><td>"+array['underTime']+"</td></tr></table>";
+	  });
+	$("#data-area").append(data_html);
 };

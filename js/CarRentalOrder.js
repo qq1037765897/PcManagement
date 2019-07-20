@@ -1,12 +1,11 @@
 var curPage;        //当前页数
 var totalItem;      //总记录数
 var pageSize;       //每一页记录数
-var totalPage=7;      //总页数
- 
+var totalPage;      //总页数
 //获取分页数据
-function $(id){
-	return document.getElementById(id);
-}     
+$(function(){
+	console.log("加载完成");
+});
 function turnPage(page)
 {
   $.ajax({
@@ -19,17 +18,15 @@ function turnPage(page)
 	},
 	success: function(json) {
 	  $("#data-area").empty();       //移除原来的分页数据
-	  totalItem = json.totalItem;
-	  pageSize = json.pageSize;
 	  curPage = page;
-	  totalPage = json.totalPage;
-	  var data_content = json.data_content;
+	  totalItem = json.totalItem;
+	  totalPage = parseInt(totalItem/8)+1;
+	  var data_content=json.CarRentalOrder;
 	  var data_html = "";
 	  $.each(data_content,function(index,array) {     //添加新的分页数据（数据的显示样式根据自己页面来设置，这里只是一个简单的列表）
-		data_html += "<div class='containerRentalOrder'><table><tr><td>"+array['setout']+"</td><td>"+array['arrive']+"</td><td>"+array['traveldata']+"</td>td>"+array['name']+"</td><td>"+array['cartype']+"</td><td><a href='javascript:CarRentalStatement("+array['RentalCarId']+")'>结单</a></td></tr></table></div>";
-	  });
- 
-	  $("#data-area").innerHTML=data_html;
+		data_html += "<div class='containerRentalOrder'><table><tr><td>"+array['departurePlace']+"</td><td>"+array['destination']+"</td><td>"+array['departureTime']+"</td><td>"+array['name']+"</td><td>"+array['phone']+"</td><td>"+array['cartype']+"</td><td><a href='javascript:CarRentalStatement("+array['RentalCarId']+")'>结单</a></td></tr></table></div>"; 
+		 });
+	  $("#data-area").append(data_html);
 	},
 	complete: function() {    //添加分页按钮栏
 	  getPageBar();
@@ -76,7 +73,7 @@ function getPageBar()
 	}
   }
   pageBar += "</ul>";
-  $('pageBar').innerHTML=pageBar;
+  document.getElementById('pageBar').innerHTML=pageBar;
 }
 //页面加载时初始化分页
 turnPage(1);
@@ -98,12 +95,26 @@ function CarRentalStatement(RentalCarId){
 				}
 			});
 	}else{
-		alert("你取消了结单")
+		alert("你取消了结单");
 	}
 }
 //接上服务器后删掉
 getPageBar()
 function turnPage(page){
-	curPage=page;
+    $("#data-area").empty();       //移除原来的分页数据
+	curPage=page;  
 	getPageBar();
+	var json = {"CarRentalOrder":[
+	{"departurePlace":"广金","destination":"广金","departureTime":"2019-07-10","name":"肖奈","phone":"13045612312","cartype":"53座豪华大巴","RentalCarId":"123132"},
+	],"totalItem":"10","page":"1"
+	};  //测试数据
+	var data_content=json.CarRentalOrder;
+	totalItem = json.totalItem;
+	curPage = json.page;
+	totalPage = parseInt(totalItem/8)+1;
+	var data_html = "";
+	$.each(data_content,function(index,array) {     //添加新的分页数据（数据的显示样式根据自己页面来设置，这里只是一个简单的列表）
+		data_html += "<div class='containerRentalOrder'><table><tr><td>"+array['departurePlace']+"</td><td>"+array['destination']+"</td><td>"+array['departureTime']+"</td><td>"+array['name']+"</td><td>"+array['phone']+"</td><td>"+array['cartype']+"</td><td><a href='javascript:CarRentalStatement("+array['RentalCarId']+")'>结单</a></td></tr></table></div>"; 
+		 });
+	$("#data-area").append(data_html);
 };

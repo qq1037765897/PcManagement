@@ -1,6 +1,6 @@
-function $(id){
-	return document.getElementById(id);
-}   
+$(function(){
+	console.log("加载完成");
+});
 function GetData(){
 	$.ajax({
 		type: 'POST',
@@ -12,12 +12,12 @@ function GetData(){
 		},
 		success: function(json) {
 		  $("#data-area").empty();       //移除原来的分页数据
-		  var data_content = json.data_content;
+		  var data_content = json.CurrentAnnouncement;
 		  var data_html = "";
 		  $.each(data_content,function(index,array) {     //添加新的分页数据（数据的显示样式根据自己页面来设置，这里只是一个简单的列表）
-			data_html += "<table><tr><td  colspan='7'>"+array['SmallProgram']+"</td><td><a href='javaScript:SmallProgram()'>"+array['phone']+"</a></td></tr></table><h1>商家公告</h1><table><tr><td colspan='7'>"+array['Merchant']+"</a></td><td><a href='javaScript:Merchant()'>下架</a></td></tr></table>";
+			data_html += "<table><tr><td  colspan='7'>"+array['SmallProgram']+"</td><td><a href='javaScript:SmallProgram()'>下架</a></td></tr></table><h1>商家公告</h1><table><tr><td colspan='7'>"+array['Merchant']+"</a></td><td><a href='javaScript:Merchant()'>下架</a></td></tr></table>";
 		  });
-		  $("#data-area").innerHTML=data_html;
+		  $("#data-area").append(data_html);
 		},
 		error: function() {
 		  alert("数据加载失败");
@@ -89,5 +89,18 @@ function SubmitAnnouncement(){
 	}else{
 		alert("你取消了提交")
 	}
-	
+}
+
+GetData();
+
+//接上服务器后删掉
+function GetData(){
+		  $("#data-area").empty();       //移除原来的分页数据
+		  var json = {"CurrentAnnouncement":[{"SmallProgram":"广金的","Merchant":"广金"}] };  //测试数据
+		  var data_content = json.CurrentAnnouncement;
+		  var data_html = "";
+		  $.each(data_content,function(index,array) {     //添加新的分页数据（数据的显示样式根据自己页面来设置，这里只是一个简单的列表）
+			data_html += "<table><tr><td  colspan='7'>"+array['SmallProgram']+"</td><td><a href='javaScript:SmallProgram()'>下架</a></td></tr></table><h1>商家公告</h1><table><tr><td colspan='7'>"+array['Merchant']+"</a></td><td><a href='javaScript:Merchant()'>下架</a></td></tr></table>";
+		  });
+		  $("#data-area").append(data_html);
 }
