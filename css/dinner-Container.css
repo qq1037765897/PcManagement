@@ -1,0 +1,111 @@
+/* CSS Document */
+.dinner-Container{
+	position:absolute;
+	top:1530px;
+	left:50%;
+	margin-left:-611px;
+	width:1200px;
+	height:391px;
+	display:flex;
+}
+.Tvplay-Container{
+	position:absolute;
+	top:1950px;
+	left:50%;
+	margin-left:-611px;
+	width:1200px;
+	height:391px;
+	display:flex;
+}
+.dinner-container-content{
+	width:902px;
+	height:391px;
+}
+.column-container-Icon .dinner-container-IconImg{
+	background-position: -141px -396px;
+}
+.dinner-dynamic-Contributing{
+	margin-top:8px;
+	width:300px;
+	height:23.8px;
+	display:flex;
+}
+.dinnerText{
+	margin-right:-30px;
+}
+.dinnerMore{
+	margin-left:273px;
+}
+.item-live-content img{
+	width:160px;
+	height:100px;
+}
+.dinner-item-live{
+    box-shadow:inset 0px 0px 0px 0px #000,
+             inset 0px 0px 0px 0px #000; 
+}
+.dinner-num{
+	display:flex;
+}
+.dinner-num .dinner-watch-icon{
+	background-position: -282px -90px;
+}
+.dinner-num .dinner-writing-icon{
+	background-position: -282px -218px;
+}
+.dinner-num  div{
+	width:80px;
+}
+.dinner-num{
+	margin-top:6px;
+}
+.Ranking-list-item-first{
+	margin-top:3px;
+    font-size: 12px;
+	width:255px;
+	overflow:hidden;
+	display:flex;
+}
+.Ranking-list-item-first a:hover{
+	color:#00a1d6;
+}
+.Ranking-list-item-first img{
+	width:80px;
+	height:50px; 
+	border-radius:4px;
+}
+.list-item-riNum{
+	height:50px;
+}
+.list-item-first_Img{
+	display:flex;
+	width:250px;
+}
+.list-item-first_Text{
+	width:145px;
+	float:left;
+}
+.list-item-first_Img a{
+	display:flex;
+}
+.first_Text{
+	width:145px;
+	height:30px;
+	overflow:hidden;
+}
+.first_Img{
+	margin-top:-2px;
+	width:80px;
+}
+.list-item-score{
+	padding-left:5px;
+	width:140px;
+	color: #99a2aa;
+	overflow:hidden;
+}
+.item-dinner-container{
+	margin-bottom:25px;
+}
+.Tvplay-dynamic{
+	margin-left:15px;
+}
