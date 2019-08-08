@@ -91,3 +91,9 @@
 	position:fixed;
 	top:5px;
 }
+
+.right-item-hover{
+	background-color: #00a1d6;
+    border-color: #00a1d6;
+    color: #fff;
+}

@@ -1,0 +1,38 @@
+//顶部右侧二级导航
+$(function(){		
+　　$("#navigation-Right>li").hover(function(){
+　　　　$(this).children('.Member-top-SecLevel').show();
+　　　　$(this).children('.top-Message-SecLevel').show();
+　　　　$(this).children('.top-later-SecLevel').show();
+　　　　$(this).children('.collection-top-SecLevel').show();
+　　　　$(this).children('.contribute-top-SecLevel').show();
+　　},function(){
+　　　　$(this).children('.Member-top-SecLevel').hide()
+　　　　$(this).children('.top-Message-SecLevel').hide()
+　　　　$(this).children('.top-later-SecLevel').hide()
+　　　　$(this).children('.collection-top-SecLevel').hide()
+　　　　$(this).children('.contribute-top-SecLevel').hide()
+　　})
+})
+//顶部左侧二级导航
+$(function(){		
+　　$("#navigation-Left>li").hover(function(){
+　　　　$(this).children('.box').show();
+	 　$(this).children('.top-live-SecLevel').show();
+	 　$(this).children('.BW-top-SecLevel').show();
+	 　$(this).children('.download-top-SecLevel').show();
+　　},function(){
+　　　　$(this).children('.box').hide()
+　　　　$(this).children('.top-live-SecLevel').hide()
+　　　　$(this).children('.BW-top-SecLevel').hide()
+　　　　$(this).children('.download-top-SecLevel').hide()
+　　})
+})
+//二级内容导航
+$(function(){		
+　　$("#content-Navigation-ul>li").hover(function(){
+　　　　$(this).children("ul").show();
+　　},function(){
+　　　　$(this).children("ul").hide()
+　　})
+})

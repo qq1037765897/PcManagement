@@ -125,9 +125,21 @@
 			</div>
 			<div class="navigation-Right">
 				<ul id="navigation-Right">
-					<li class="navigation-Right-Contribute"><a href="">投稿</a></li>
+					<li class="navigation-Right-Contribute"><a href="">投稿</a>
+								<div class="contribute-top-SecLevel icon">
+									<a href=""><i class="top-SecLevel-icon special"></i><span>专栏投稿</span></a>
+									<a href=""><i class="top-SecLevel-icon audio"></i><span>音频投稿</span></a>
+									<a href=""><i class="top-SecLevel-icon video"></i><span>视频投稿</span></a>
+									<a href=""><i class="top-SecLevel-icon management"></i><span>投稿管理</span></a>
+									<a href=""><i class="top-SecLevel-icon creation"></i><span>创作中心</span></a>
+								</di>
+					</li>
 					<li class="navColor"><a href="">历史</a></li>
-					<li class="navColor"><a href="">收藏</a></li>
+					<li class="navColor"><a href="">收藏</a>
+								<div class="collection-top-SecLevel icon">
+									<a href="">查看更多<i class="collection-more"></i></a>
+								</div>
+					</li>
 					<li class="navColor"><a href="">稍后再看</a>
 								<div class="top-later-SecLevel">
 									<ul><li class="no-data">列表中空空如也，赶紧去添加几个吧~</li>
@@ -1328,25 +1340,25 @@
 	<div class="right-slidings-container">
 		<div class="right-slidings-content">
 			<div class="right-slidings-nav-list" id="navList">
-				<div sortindex="0" class="right-item sortable">直播</div>
-				<div sortindex="1" class="right-item sortable">动画</div>
-				<div sortindex="2" class="right-item sortable">番剧</div>
-				<div sortindex="3" class="right-item sortable">国创</div>
-				<div sortindex="4" class="right-item sortable">音乐</div>
-				<div sortindex="5" class="right-item sortable">舞蹈</div>
-				<div sortindex="6" class="right-item sortable">游戏</div>
-				<div sortindex="7" class="right-item sortable">科技</div>
-				<div sortindex="8" class="right-item sortable">数码</div>
-				<div sortindex="9" class="right-item sortable">生活</div>
-				<div sortindex="10" class="right-item sortable">鬼畜</div>
-				<div sortindex="11" class="right-item sortable">时尚</div>
-				<div sortindex="12" class="right-item sortable">广告</div>
-				<div sortindex="13" class="right-item sortable">娱乐</div>
-				<div sortindex="14" class="right-item sortable">专栏</div>
-				<div sortindex="15" class="right-item sortable">电影</div>
-				<div sortindex="16" class="right-item sortable">TV剧</div>
-				<div sortindex="17" class="right-item sortable">影视</div>
-				<div sortindex="18" class="right-item sortable">纪录片</div>
+				<div id="live" class="right-item sortable">直播</div>
+				<div class="right-item sortable">动画</div>
+				<div class="right-item sortable">番剧</div>
+				<div class="right-item sortable">国创</div>
+				<div class="right-item sortable">音乐</div>
+				<div class="right-item sortable">舞蹈</div>
+				<div class="right-item sortable">游戏</div>
+				<div class="right-item sortable">科技</div>
+				<div class="right-item sortable">数码</div>
+				<div class="right-item sortable">生活</div>
+				<div class="right-item sortable">鬼畜</div>
+				<div class="right-item sortable">时尚</div>
+				<div class="right-item sortable">广告</div>
+				<div class="right-item sortable">娱乐</div>
+				<div id="special" class="right-item sortable">专栏</div>
+				<div id="movies" class="right-item sortable">电影</div>
+				<div id="tvPlay" class="right-item sortable">TV剧</div>
+				<div class="right-item sortable">影视</div>
+				<div class="right-item sortable">纪录片</div>
 				<div class="right-item item-sorting iconSmaller"><i class="icon"></i>排序</div>
 			</div>
 			<div class="s-line"></div>
@@ -1360,87 +1372,9 @@
 		</div>
 	</div>
 	
-	<script>
-	//顶部右侧二级导航
-	$(function(){		
-	　　$("#navigation-Right>li").hover(function(){
-	　　　　$(this).children('.Member-top-SecLevel').show();
-	　　　　$(this).children('.top-Message-SecLevel').show();
-	　　　　$(this).children('.top-later-SecLevel').show();
-	　　},function(){
-	　　　　$(this).children('.Member-top-SecLevel').hide()
-	　　　　$(this).children('.top-Message-SecLevel').hide()
-	　　　　$(this).children('.top-later-SecLevel').hide()
-	　　})
-	})
-	//顶部左侧二级导航
-	$(function(){		
-	　　$("#navigation-Left>li").hover(function(){
-	　　　　$(this).children('.box').show();
-		 　$(this).children('.top-live-SecLevel').show();
-		 　$(this).children('.BW-top-SecLevel').show();
-		 　$(this).children('.download-top-SecLevel').show();
-	　　},function(){
-	　　　　$(this).children('.box').hide()
-	　　　　$(this).children('.top-live-SecLevel').hide()
-	　　　　$(this).children('.BW-top-SecLevel').hide()
-	　　　　$(this).children('.download-top-SecLevel').hide()
-	　　})
-	})
-	//二级内容导航
-	$(function(){		
-	　　$("#content-Navigation-ul>li").hover(function(){
-	　　　　$(this).children("ul").show();
-	　　},function(){
-	　　　　$(this).children("ul").hide()
-	　　})
-	})
-	//置顶按钮
-	$(function(){  
-        var go_top = $('.go-top');  
-        function site(){  
-            var wh = $(window).height()*0.2;  
-            var st = $(document).scrollTop();  
-            if(st > wh)  
-                go_top.fadeIn("slow");  
-            else  
-                go_top.fadeOut("slow");  
-        }  
-        $(window).scroll(function(){   
-            site();  
-        })  
-        go_top.click(function(prem) {    
-            prem.preventDefault();    
-            //绑定返回顶部    
-            var top = $(document).scrollTop();            
-            var ini_h = 1;    
-            timer = setInterval(function() {    
-                if (top -  ini_h <= 0) {    
-                    $(window).scrollTop(0);    
-                    timer && clearInterval(timer);    
-                } else {    
-                    top = top - ini_h;    
-                    $(window).scrollTop(top);  
-                }    
-                ini_h += 5;     //数字越大走越快    
-            }, 15);    
-        });  
-    })
-	//右侧导航跟随滚动
-	$(function(){
-		var nav=$(".right-slidings-content"); //得到导航对象
-		var win=$(window); //得到窗口对象
-		var sc=$(document);//得到document文档对象。
-		win.scroll(function(){
-		if(sc.scrollTop()>=220){
-			nav.addClass("right-fix");
-		}else{
-			nav.removeClass("right-fix");
-		}
-		});
-	});
-	</script>
 	<script src="js/CarouselJs.js"></script>
+	<script src="js/right-slidings.js"></script>
+	<script src="js/secondary-navigation.js"></script>
 	
 	
 </body>

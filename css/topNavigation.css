@@ -369,6 +369,7 @@
 .hot-live-content{
     margin-top: -3px;
 	font-size: 12px;
+	height:190px;
     border-right: 1px solid #eaeaea;
 }
 .hot-live-content img{
@@ -379,7 +380,7 @@
 .hot-live-content a{
 	position: relative;
     display: inline-block;
-    margin: 0px 17px 0 0;
+    margin: 0px 16px 0 0;
     width: 64px;
     height: auto;
 	font-size:12px;
@@ -599,4 +600,90 @@
 }
 .no-data{
 	color: #aaa;
+}
+
+
+.collection-top-SecLevel{
+	display:none;
+	position: absolute;
+	top: 42px;
+	margin-left:-120px;
+    width: 320px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,.16);
+    border: 1px solid #e5e9ef;
+    border-radius: 0 0 4px 4px;
+}
+.collection-top-SecLevel a{
+	display: block;
+    margin: 14px 12px 12px;
+    background-color: #e5e9ef;
+    text-align: center;
+    border: 1px solid #e0e6ed;
+    height: 22px;
+    line-height: 22px;
+    color: #222;
+    border-radius: 4px;
+}
+.collection-top-SecLevel a:hover{
+    background-color: #ccd0d7;
+}
+.collection-top-SecLevel .collection-more{
+	background-position: -478px -218px;
+    width: 6px;
+    height: 10px;
+    margin: -1px 0 0 5px;
+}
+
+
+.contribute-top-SecLevel{
+	display:none;
+    position: absolute;
+    top: 42px;
+	margin-left:-280px;
+	width: 340px;
+    background: #fff;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.16);
+    overflow: hidden;
+}
+.contribute-top-SecLevel a{
+	cursor: pointer;
+    text-align: center;
+    width: 68px;
+    height: 64px;
+	color: #f25d8e;
+	font-size:12px;
+    transition: .2s;
+    position: relative;
+    background: #fff;
+	display:block;
+	float:left;
+}
+.contribute-top-SecLevel a:hover{
+	background-color:#ECECEC;
+}
+.contribute-top-SecLevel .top-SecLevel-icon{
+	margin:10px 0 -5px 23px;
+	display: block;
+    width: 20px;
+    height: 20px;
+    transition: .2s;
+}
+.contribute-top-SecLevel .special{
+	background-position: -534px -919px;
+}
+.contribute-top-SecLevel .audio{
+	background-position: -534px -983px;
+}
+.contribute-top-SecLevel .video{
+	background-position: -471px -919px;
+}
+
+.contribute-top-SecLevel .management{
+	background-position: -471px -982px;
+}
+
+.contribute-top-SecLevel .creation{
+	background-position: -471px -1751px;
 }
