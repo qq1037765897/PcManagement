@@ -37,7 +37,6 @@
 	height:12px;
 	transform: scale(1);
 }
-
 </style>
 </head>
 <body>
@@ -125,14 +124,44 @@
 				</ul>
 			</div>
 			<div class="navigation-Right">
-				<ul>
+				<ul id="navigation-Right">
 					<li class="navigation-Right-Contribute"><a href="">投稿</a></li>
 					<li class="navColor"><a href="">历史</a></li>
 					<li class="navColor"><a href="">收藏</a></li>
-					<li class="navColor"><a href="">稍后再看</a></li>
+					<li class="navColor"><a href="">稍后再看</a>
+								<div class="top-later-SecLevel">
+									<ul><li class="no-data">列表中空空如也，赶紧去添加几个吧~</li>
+									</ul>
+								</div>
+					</li>
 					<li class="navColor"><a href="">动态</a></li>
-					<li class="navColor"><a href="">消息</a></li>
-					<li class="navColor"><a href="">大会员</a></li>
+					<li class="navColor"><a href="">消息</a>
+								<div class="top-Message-SecLevel">
+									<a  href="">回复我的</a>
+									<a  href="">@我的</a>
+									<a  href="">收到的赞</a>
+									<a  href="">系统通知</a>
+									<a  href="">我的消息</a>
+								</div>
+					</li>
+					<li class="navColor"><a href="">大会员</a>
+								<div class="Member-top-SecLevel">
+									<div class="Member-top-title">精彩推荐</div>
+									<div class="Member-top-content">
+										<div class="Member-top-item">
+											<a href=""><img  src="image/top-ContainerImg/11.jpg" style="margin-left:15px;"></a>
+										</div>
+										<div class="Member-top-item">
+											<a href=""><img src="image/top-ContainerImg/22.jpg" style="margin-left:7px;"></a>
+										</div>
+									</div>
+									<div class="Member-content-title">
+										<a href="">大会员新用户首月9元来啦</a>
+										<a href="">人生一串2 一起来撸串吧！</a>
+									</div>
+									<div class="Member-content-btn"><button>续期大会员</button><!----></div>
+								</div>
+					</li>
 					<a href=""><span class="iconfont user-station">&#xe8ad;</span></a>
 				</ul>
 			</div>
@@ -1332,8 +1361,19 @@
 	</div>
 	
 	<script>
-	//顶部导航游戏中心 
-	//顶部导航游戏中心
+	//顶部右侧二级导航
+	$(function(){		
+	　　$("#navigation-Right>li").hover(function(){
+	　　　　$(this).children('.Member-top-SecLevel').show();
+	　　　　$(this).children('.top-Message-SecLevel').show();
+	　　　　$(this).children('.top-later-SecLevel').show();
+	　　},function(){
+	　　　　$(this).children('.Member-top-SecLevel').hide()
+	　　　　$(this).children('.top-Message-SecLevel').hide()
+	　　　　$(this).children('.top-later-SecLevel').hide()
+	　　})
+	})
+	//顶部左侧二级导航
 	$(function(){		
 	　　$("#navigation-Left>li").hover(function(){
 	　　　　$(this).children('.box').show();
