@@ -1,0 +1,9 @@
+$(function(){
+	console.log("加载完毕");
+	//兼职查看二级导航
+　　$(".DrivingExamine").hover(function(){
+　　　　$(this).children('.box').show();
+　　},function(){
+　　　　$(this).children('.box').hide()
+　　})
+})
