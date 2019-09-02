@@ -13,17 +13,22 @@ else{
 	
 	/*测试部分 */
 	var json = {"dataContent":[
-	{"jobName":"移动公司实习生","jobContent":"负责在上菜区将菜品及时摆出，保证出餐窗口的整洁干净，及时跟进顾客的饮食情况，在结账窗口对顾客的菜品消费进行数目结账","jobSettle":"日结","jobSalary":"130/天","jobPlace":"广东省广州市天河区龙洞迎福路527号广东金融学院北苑饭堂二楼","jobDate":"2019-07-31到2019-08-07","jobTime":"10:00-15:00","endTime":"2019-08-06","recruitNum":"21","welfare":"爱神的箭卡时间看","sex":"不限","requirement":"asdhasjkhdkasjhd就打算开发和接口","legalPerson":"肖奈","phone":"13501212354","companyIntroduce":"发货就肯定会接口"},
-	],"dataType":"1"           //dataType值为1时候为 我的保存 页面的值,此时界面的值可以更改,dataType值为2时候为 我的发布 页面的值,此时界面的值不可以更改,
+	{"jobName":"移动公司实习生","jobContent":"负责在上菜区将菜品及时摆出，保证出餐窗口的整洁干净，及时跟进顾客的饮食情况，在结账窗口对顾客的菜品消费进行数目结账","jobSettle":"日结","jobSalary":"130/天","jobPlace":"广东省广州市天河区龙洞迎福路527号广东金融学院北苑饭堂二楼","jobDate":"2019-07-31到2019-08-07","jobTime":"10:00-15:00","endTime":"2019-08-06","recruitNum":"21","welfare":"爱神的箭卡时间看","sex":"不限","requirement":"asdhasjkhdkasjhd就打算开发和接口","legalPerson":"肖奈","phone":"13501212354","companyIntroduce":"发货就肯定会接口","OrderStatus":"1"},           //OrderStatus为审核界面状态，1为正在审核，2为审核未通过
+	],"dataType":"2"           //dataType值为1时候为 我的保存 页面的值,dataType值为2时候为 我的审核 页面的值,dataType值为3时候为 我的审核 页面的值,
 	}
 	var content=json.dataContent[0];
 	var dataType=json.dataType;
-	if(dataType==2){        //dataType值为2时候为 我的发布 页面的值,此时界面的值不可以更改,只有下架功能
+	if(dataType==2){       	   //dataType值为1时候为 我的保存 页面的值,dataType值为2时候为 我的审核 页面的值,dataType值为3时候为 我的审核 页面的值
+		$("#stateJudgment").empty(); 
+		var data_html = "<button id='Shelves' class='Part-timeButton save'>删除</button> <button id='uploadReview' class='Part-timeButton uploadReview'>重新审核</button>";
+		$("#stateJudgment").append(data_html);
+	}
+	if(dataType==3){       	   //dataType值为1时候为 我的保存 页面的值,dataType值为2时候为 我的审核 页面的值,dataType值为3时候为 我的审核 页面的值
 		$("#stateJudgment").empty(); 
 		var data_html = "<button id='Shelves' class='Part-timeButton Shelves'>下架</button>";
 		$("#stateJudgment").append(data_html);
 	}
-	
+
 	if(content.jobSettle=="日结"){
 		content.jobSettle=1;
 	}
@@ -77,11 +82,17 @@ else{
 			success: function(json){
 				var content=json.dataContent[0];
 				var dataType=json.dataType;
-				if(dataType==2){        //dataType值为2时候为 我的发布 页面的值,此时界面的值不可以更改,只有下架功能
+				if(dataType==2){       	   //dataType值为1时候为 我的保存 页面的值,dataType值为2时候为 我的审核 页面的值,dataType值为3时候为 我的审核 页面的值
+					$("#stateJudgment").empty(); 
+					var data_html = "<button id='Shelves' class='Part-timeButton save'>删除</button> <button id='uploadReview' class='Part-timeButton uploadReview'>重新审核</button>";
+					$("#stateJudgment").append(data_html);
+				}
+				if(dataType==3){       	   //dataType值为1时候为 我的保存 页面的值,dataType值为2时候为 我的审核 页面的值,dataType值为3时候为 我的审核 页面的值
 					$("#stateJudgment").empty(); 
 					var data_html = "<button id='Shelves' class='Part-timeButton Shelves'>下架</button>";
 					$("#stateJudgment").append(data_html);
 				}
+			
 				if(content.jobSettle=="日结"){
 					content.jobSettle=1;
 				}
