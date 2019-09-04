@@ -1,5 +1,5 @@
 function Shelves(internshipId){
-	if(confirm("确定是否下架")){
+	if(confirm("下架会清除该兼职所有通过用户的数据,确定是否下架")){
 	console.log("实习ID:"+internshipId+"下架（接上数据库后删除）");  
 	$.ajax({
 		type: "post",  //数据提交方式（post/get）
