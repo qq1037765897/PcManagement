@@ -1,42 +1,22 @@
-h1{
-	font-size:18px;
-	margin:0px;
-	text-align:center;
-}
-.busSearcher{
-    position: absolute;
-    left: 300px;
-    height: 600px;
-    width: 700px;
-}
-.busSearcher_con{
-    margin: 0 auto;
-    margin-top: 50px;
-	padding-top:20px;
-	width: 630px;
-    height: 480px;
-	background-color: rgba(255,255,255,0.6);
-	border-radius: 10px;
-}
-.busSearcher_con ul{
+.publicModelFrame_con ul{
 	margin:20px auto;
 	line-height:30px;
 	width:400px;
 	height:30px;
 }
-.busSearcher_con ul input{
+.publicModelFrame_con ul input{
     position: absolute;
     left: 370px;
 	width: 120px;
 	height:22px;
-	padding:3px 0 3px 20px;
+	padding:3px 0px 3px 20px;
 	border:none;
 	-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
 	-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 	
 }
-.busSearcher_con ul select{
+.publicModelFrame_con ul select{
     position: absolute;
     left: 370px;
 	width: 140px;
@@ -44,20 +24,14 @@ h1{
 	padding-left:20px;
 	border:none;
 }
-.busSearcher_con ul option{
+.publicModelFrame_con ul option{
 	height:30px;
-	
+}
+.clear{
+	margin: -40px 0 0 210px;
 }
 .submit{
-	margin: -40px 0 0 340px;
-    width: 80px;
-	padding: 3px 5px;
-    background:#8fd68b;
-    color: #fff;
-    border: 2px solid rgba(255,255,255,0.8);
-	border-radius:5px;
-    font-weight: bold;
-    font-family: "微软雅黑", "Microsoft Yahei", "黑体", sans-serif
+	margin: -40px 0 0 60px;
 }
 .success{
 	color:red;
@@ -76,10 +50,4 @@ h1{
 	padding-left:10px;
 	border-radius: 5px;
 	color: #ffffff;
-}
-.busSearcher_con ul select{
-	border-radius:4px;
-}
-.busSearcher_con ul input{
-	border-radius:4px;
 }

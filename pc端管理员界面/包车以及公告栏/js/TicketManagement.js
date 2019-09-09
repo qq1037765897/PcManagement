@@ -192,6 +192,7 @@ function ShelvesSubmit(ticketId){
 }
 //接上服务器后删掉
 getPageBar();
+/*
 function turnPage(page){ 
 	$("#data-area").empty();       //移除原来的分页数据
 	curPage=page;
@@ -241,3 +242,4 @@ function turnPageSecond(pageSecond){
 	  });
 	$("#data-areaSecond").append(data_html);
 };
+*/

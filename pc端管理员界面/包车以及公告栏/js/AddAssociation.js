@@ -11,47 +11,7 @@ if(date<10){
 var time =year + "-" + month + "-" + date;
 $('departureDay').min=time;
 
-function addLoadEvent(func) {
- var oldonload = window.onload;
- if (typeof window.onload != 'function') {
- window.onload = func;
- } else {
- window.onload = function() {
-  oldonload();
-  func();
- }
- }
-}
-function prepareInputsForHints() {
- var inputs = document.getElementsByTagName("input");
- for (var i=0; i<inputs.length; i++){
-  if (inputs[i].parentNode.getElementsByTagName("span")[0]) {
-   inputs[i].onfocus = function () {
-	this.parentNode.getElementsByTagName("span")[0].style.display = "inline";
-   }
-   inputs[i].onblur = function () {
-	this.parentNode.getElementsByTagName("span")[0].style.display = "none";
-   }
-  }
- }
- var selects = document.getElementsByTagName("select");
- for (var k=0; k<selects.length; k++){
-  if (selects[k].parentNode.getElementsByTagName("span")[0]) {
-   selects[k].onfocus = function () {
-	this.parentNode.getElementsByTagName("span")[0].style.display = "inline";
-   }
-   selects[k].onblur = function () {
-	this.parentNode.getElementsByTagName("span")[0].style.display = "none";
-   }
-  }
- }
-}
-addLoadEvent(prepareInputsForHints);
-
 function check(smallint,price){
-	function isInteger(obj) {
-		 return obj%1 === 0
-		}
 	if($('#departurePlace').val()==$('#destination').val()){
 			alert('出发地和目的地不能相同');
 			return false
@@ -60,34 +20,6 @@ function check(smallint,price){
 			alert('出发日期不能为空或者以前时间');
 			return false
 	}
-	else if(smallint==''){
-			alert('座位数不能为空!');
-			return false
-		}
-	else if(isNaN(Number(smallint,))){  //当输入不是数字的时候，Number后返回的值是NaN;然后用isNaN判断。
-			alert('座位数不是数字!');
-			return false
-		}
-	else if(isInteger(smallint)==false){  //当输入不是数字的时候，Number后返回的值是NaN;然后用isNaN判断。
-			alert('座位数不是整数!');
-			return false
-		}
-	else if(smallint<=0){  //当输入不是数字的时候，Number后返回的值是NaN;然后用isNaN判断。
-			alert('座位数不能小于或等于0');
-			return false
-		}
-	else if(price==''){
-			alert('售价不能为空!');
-			return false
-		}
-	else if(isNaN(Number(price,))){  //当输入不是数字的时候，Number后返回的值是NaN;然后用isNaN判断。
-			alert('售价不是数字!');
-			return false
-		}
-	else if(price<0){  //当输入不是数字的时候，Number后返回的值是NaN;然后用isNaN判断。
-			alert('售价不能为负数');
-			return false
-		}
 	return true
 }
 //提交按钮
@@ -136,23 +68,6 @@ $("#submit").click(function(){
 		}
 	}
 })
-//清空按钮
-$("#clear").click(function(){
-	if(confirm("确认是否清空页面数据")){	  
-		var ruralCommittee=$('#ruralCommittee').val("");
-		var departurePlace=$('#departurePlace').val("");
-		var destination=$('#destination').val("");
-		var departureDay=$('#departureDay').val("");
-		var departureTime=$('#departureTime').val("09:00");
-		var smallint=$('#smallint').val("");
-		var price=$('#price').val("");
-		var type=$('#type').val("1");
-	}
-	else{
-		console.log("您取消了清空");		
-	}					   
-})
-
 $(function(){
 	//同乡会二级联动
 	var ruralCommittee='{"汕头同乡会":["广金广州本部","广金肇庆校区","汕头"],"普宁同乡会":["普宁1","普宁2","普宁3"],"丰顺同乡会":["丰顺1","丰顺2","丰顺3"]}';
@@ -171,6 +86,13 @@ $(function(){
 		}
 	})
 	
+	//添加地点按钮
+	var i=4;
+	$("#addLocation").click(function(){
+		var html="<ul><label>上下车地点:</label><input id='location"+i+"'  type='text'/></ul>";
+		$("#centent").append(html);
+		i++;
+	})
 	
 })
 
