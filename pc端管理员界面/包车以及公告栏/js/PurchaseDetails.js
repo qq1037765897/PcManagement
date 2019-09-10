@@ -96,7 +96,7 @@ getPageBar()
 function turnPage(page){
 	curPage=page;
 	getPageBar();
-	$("#data-area").empty();       //移除原来的分页数据
+	//$("#data-area").empty();       //移除原来的分页数据
 	var json = {"PurchaseDetails":[
 	{"name":"肖奈","phone":"13045612312","price":"120","name":"肖奈","ticketNum":"3","startTime":"2019-08-12"},],"totalItem":"10","page":"1"
 	};  //测试数据

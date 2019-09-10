@@ -154,8 +154,17 @@ $("#clear").click(function(){
 })
 
 $(function(){
+	//测试部分
+	var json={dataContent:[{"committee":"丰顺同乡会","committeeId":"123123123","CommitteePalace":["丰顺1","丰顺2","丰顺3"]},{"committee":"普宁同乡会","committeeId":"123123123","CommitteePalace":["普宁1","普宁2","普宁3","普宁4"]},{"committee":"汕头同乡会","committeeId":"123123123","CommitteePalace":["汕头1","汕头2","汕头3"]}
+	]};
+	var dataContent=json.dataContent;
+	var data={};
+	for(var i=0;i<dataContent.length;i++){
+		var committee=dataContent[i].committee;
+		data[committee]=dataContent[i].CommitteePalace;
+	}
 	//同乡会二级联动
-	var ruralCommittee='{"汕头同乡会":["广金广州本部","广金肇庆校区","汕头"],"普宁同乡会":["普宁1","普宁2","普宁3"],"丰顺同乡会":["丰顺1","丰顺2","丰顺3"]}';
+	var ruralCommittee=JSON.stringify(data)
 	var departureAndDestination=eval('('+ruralCommittee+')');
 	for(var key in departureAndDestination){
 		$("#ruralCommittee").append("<option value ='"+key+"'>"+key+"</option>");
@@ -170,6 +179,42 @@ $(function(){
 			$("#destination").append("<option value ='"+nowAddress+"'>"+nowAddress+"</option>")
 		}
 	})
+	
+	
+	/*正式部分,请求同乡会数据
+	$.ajax({
+	type: 'POST',
+	url: commentDataUrl,     //这里是请求的后台地址，自己定义
+	dataType: 'json',
+	success: function(json) {
+	 	var dataContent=json.dataContent;
+		var data={};
+		for(var i=0;i<dataContent.length;i++){
+		var committee=dataContent[i].committee;
+		data[committee]=dataContent[i].CommitteePalace;
+		}
+		//同乡会二级联动
+		var ruralCommittee=JSON.stringify(data)
+		var departureAndDestination=eval('('+ruralCommittee+')');
+		for(var key in departureAndDestination){
+			$("#ruralCommittee").append("<option value ='"+key+"'>"+key+"</option>");
+		}
+		$("#ruralCommittee").change(function(){
+			var nowRuralCommittee=$(this).val();
+			$("#departurePlace").html('<option value ="">选择出发地</option>');
+			$("#destination").html('<option value ="">选择出发地</option>')
+			for(var i in departureAndDestination[nowRuralCommittee]){
+				var nowAddress=departureAndDestination[nowRuralCommittee][i];
+				$("#departurePlace").append("<option value ='"+nowAddress+"'>"+nowAddress+"</option>")
+				$("#destination").append("<option value ='"+nowAddress+"'>"+nowAddress+"</option>")
+			}
+		 }
+		 
+  	 }	
+   })
+   */
+   
+	
 	
 	
 })

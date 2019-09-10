@@ -35,11 +35,17 @@ function turnPage(page)
 		else if(array['isInsurance']=="1"){
 			array['isInsurance']="是"
 		}
+		if(array['status']=="1"){
+			array['status']="未安排"
+		}
+		else if(array['status']=="2"){
+			array['status']="已安排"
+		}
 		if(array['isBack']=="0"){
-			data_html += "<div class='containerRentalOrder'><ul><li title="+array['departurePlace']+">"+array['departurePlace']+"</li><li title="+array['destination']+">"+array['destination']+"</li class='RentalOrderCenter'><li class='RentalOrderCenter'>"+array['travelNum']+"</li><li>"+array['departureTime']+"</li><li class='RentalOrderCenter'>无</li><li>"+array['vehicleType']+"</li><li class='RentalOrderCenter'>"+array['isInsurance']+"</li><li class='RentalOrderCenter'>"+array['username']+"</li><li>"+array['phone']+"</li><li class='RentalOrderCenter'><a href='vehicle-information-entry.html?tourismId="+array['tourismId']+"'>进入</a></li></ul></div>"; 
+			data_html += "<div class='containerRentalOrder'><ul><li title="+array['departurePlace']+">"+array['departurePlace']+"</li><li title="+array['destination']+">"+array['destination']+"</li class='RentalOrderCenter'><li class='RentalOrderCenter'>"+array['travelNum']+"</li><li>"+array['departureTime']+"</li><li class='RentalOrderCenter'>无</li><li>"+array['vehicleType']+"</li><li class='RentalOrderCenter'>"+array['isInsurance']+"</li><li class='RentalOrderCenter'>"+array['username']+"</li><li>"+array['phone']+"</li><li class='RentalOrderCenter'>"+array['status']+"</li><li class='RentalOrderCenter'><a href='vehicle-information-entry.html?tourismId="+array['tourismId']+"'>进入</a></li></ul></div>"; 
 		}
 		else{
-			data_html += "<div class='containerRentalOrder'><ul><li title="+array['departurePlace']+">"+array['departurePlace']+"</li><li title="+array['destination']+">"+array['destination']+"</li class='RentalOrderCenter'><li class='RentalOrderCenter'>"+array['travelNum']+"</li><li>"+array['departureTime']+"</li><li>"+array['backTime']+"</li><li>"+array['vehicleType']+"</li><li class='RentalOrderCenter'>"+array['isInsurance']+"</li><li class='RentalOrderCenter'>"+array['username']+"</li><li>"+array['phone']+"</li><li class='RentalOrderCenter'><a href='vehicle-information-entry.html?tourismId="+array['tourismId']+"'>进入</a></li></ul></div>"; 
+			data_html += "<div class='containerRentalOrder'><ul><li title="+array['departurePlace']+">"+array['departurePlace']+"</li><li title="+array['destination']+">"+array['destination']+"</li class='RentalOrderCenter'><li class='RentalOrderCenter'>"+array['travelNum']+"</li><li>"+array['departureTime']+"</li><li>"+array['backTime']+"</li><li>"+array['vehicleType']+"</li><li class='RentalOrderCenter'>"+array['isInsurance']+"</li><li class='RentalOrderCenter'>"+array['username']+"</li><li>"+array['phone']+"</li><li class='RentalOrderCenter'>"+array['status']+"</li><li class='RentalOrderCenter'><a href='vehicle-information-entry.html?tourismId="+array['tourismId']+"'>进入</a></li></ul></div>"; 
 		}
   	  });
 	  $("#data-area").append(data_html);
@@ -122,7 +128,7 @@ function turnPage(page){
 	curPage=page;  
 	getPageBar();
 	var json = {"CarRentalOrder":[
-	{"departurePlace":"广州市区广州市区广州市区","destination":"广金广金广金广金广金广金广金广金","travelNum":"50","departureTime":"2019-07-10 14:01","isBack":"0","backTime":"2019-07-11 14:01","username":"肖奈","phone":"13045612312","vehicleType":"53座豪华大巴","isInsurance":"1","tourismId":"123132"},
+	{"departurePlace":"广州市区广州市区广州市区","destination":"广金广金广金广金广金广金广金广金","travelNum":"50","departureTime":"2019-07-10 14:01","isBack":"1","backTime":"2019-07-11 14:01","username":"肖奈","phone":"13045612312","vehicleType":"53座豪华大巴","isInsurance":"1","status":"1","tourismId":"123132"},
 	],"totalItem":"20","page":"1"
 	};  //测试数据   每页11条数据
 	var data_content=json.CarRentalOrder;
@@ -142,11 +148,17 @@ function turnPage(page){
 		else if(array['isInsurance']=="1"){
 			array['isInsurance']="是"
 		}
+		if(array['status']=="1"){
+			array['status']="未安排"
+		}
+		else if(array['status']=="2"){
+			array['status']="已安排"
+		}
 		if(array['isBack']=="0"){
-			data_html += "<div class='containerRentalOrder'><ul><li title="+array['departurePlace']+">"+array['departurePlace']+"</li><li title="+array['destination']+">"+array['destination']+"</li class='RentalOrderCenter'><li class='RentalOrderCenter'>"+array['travelNum']+"</li><li>"+array['departureTime']+"</li><li class='RentalOrderCenter'>无</li><li>"+array['vehicleType']+"</li><li class='RentalOrderCenter'>"+array['isInsurance']+"</li><li class='RentalOrderCenter'>"+array['username']+"</li><li>"+array['phone']+"</li><li class='RentalOrderCenter'><a href='vehicle-information-entry.html?tourismId="+array['tourismId']+"'>进入</a></li></ul></div>"; 
+			data_html += "<div class='containerRentalOrder'><ul><li title="+array['departurePlace']+">"+array['departurePlace']+"</li><li title="+array['destination']+">"+array['destination']+"</li class='RentalOrderCenter'><li class='RentalOrderCenter'>"+array['travelNum']+"</li><li>"+array['departureTime']+"</li><li class='RentalOrderCenter'>无</li><li>"+array['vehicleType']+"</li><li class='RentalOrderCenter'>"+array['isInsurance']+"</li><li class='RentalOrderCenter'>"+array['username']+"</li><li>"+array['phone']+"</li><li class='RentalOrderCenter'>"+array['status']+"</li><li class='RentalOrderCenter'><a href='vehicle-information-entry.html?tourismId="+array['tourismId']+"'>进入</a></li></ul></div>"; 
 		}
 		else{
-			data_html += "<div class='containerRentalOrder'><ul><li title="+array['departurePlace']+">"+array['departurePlace']+"</li><li title="+array['destination']+">"+array['destination']+"</li class='RentalOrderCenter'><li class='RentalOrderCenter'>"+array['travelNum']+"</li><li>"+array['departureTime']+"</li><li>"+array['backTime']+"</li><li>"+array['vehicleType']+"</li><li class='RentalOrderCenter'>"+array['isInsurance']+"</li><li class='RentalOrderCenter'>"+array['username']+"</li><li>"+array['phone']+"</li><li class='RentalOrderCenter'><a href='vehicle-information-entry.html?tourismId="+array['tourismId']+"'>进入</a></li></ul></div>"; 
+			data_html += "<div class='containerRentalOrder'><ul><li title="+array['departurePlace']+">"+array['departurePlace']+"</li><li title="+array['destination']+">"+array['destination']+"</li class='RentalOrderCenter'><li class='RentalOrderCenter'>"+array['travelNum']+"</li><li>"+array['departureTime']+"</li><li>"+array['backTime']+"</li><li>"+array['vehicleType']+"</li><li class='RentalOrderCenter'>"+array['isInsurance']+"</li><li class='RentalOrderCenter'>"+array['username']+"</li><li>"+array['phone']+"</li><li class='RentalOrderCenter'>"+array['status']+"</li><li class='RentalOrderCenter'><a href='vehicle-information-entry.html?tourismId="+array['tourismId']+"'>进入</a></li></ul></div>"; 
 		}
 	});
 	$("#data-area").append(data_html);

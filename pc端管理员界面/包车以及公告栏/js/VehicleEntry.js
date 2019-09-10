@@ -74,8 +74,8 @@ function CarRentalStatement(){
 				data: {
 				"tourismId":tourismId},//提交的数据
 				dataType: "json",//返回的数据类型格式
-				success: function(msg){
-					if (msg.success){  //修改成功
+				success: function(json){
+					if (json.success){  //修改成功
 					   alert("下架成功") //修改成功处理代码...
 					}else {  //修改失败
 					   alert("下架失败") //修改失败处理代码...
@@ -88,16 +88,19 @@ function CarRentalStatement(){
 }
 
 $(function(){
-//	$.ajax({
-//	type: 'POST',
-//	url: commentDataUrl,     //这里是请求的后台地址，自己定义
-//	data: {'tourismId':tourismId},
-//	dataType: 'json',
-//	success: function(json) {
-//		$('#license_plate_number').val(json.license_plate_number);
-//		$('#vehicle_type').val(json.vehicle_type);
-//		$('#color').val(json.color);
-//		$('#driver_name').val(json.driver_name);
-//		$('#driver_phone').val(json.driver_phone);
-//  }	
+	/*
+	$.ajax({
+	type: 'POST',
+	url: commentDataUrl,     //这里是请求的后台地址，自己定义
+	data: {'tourism_id':tourism_id},
+	dataType: 'json',
+	success: function(json) {
+	 	var dataContent=json.dataContent;
+		$('#license_plate_number').val(dataContent.licensePlateNumber);
+		$('#vehicle_type').val(dataContent.vehicleType);
+		$('#color').val(dataContent.color);
+		$('#driver_name').val(dataContent.driverName);
+		$('#driver_phone').val(dataContent.driverPhone);
+  }	
+  */
 })

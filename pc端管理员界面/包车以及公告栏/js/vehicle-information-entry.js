@@ -33,11 +33,11 @@ function submitInformation(){
 			return false
 	}
 	else{
-		var license_plate_number=$('#license_plate_number').val();
-		var vehicle_type=$('#vehicle_type').val();
+		var licensePlateNumber=$('#license_plate_number').val();
+		var vehicleType=$('#vehicle_type').val();
 		var color=$('#color').val();
-		var driver_name=$('#driver_name').val();
-		var driver_phone=$('#driver_phone').val();
+		var driverName=$('#driver_name').val();
+		var driverPhone=$('#driver_phone').val();
 		if(confirm("车牌号 : "+license_plate_number+"\r"+"车辆类型 ："+vehicle_type+"\r"+"车身颜色 : "+color+"\r"+"司机姓名 : "+driver_name+"\r"+"司机联系方式 : "+driver_phone)){
 			$.ajax({
 			type: "post",  //数据提交方式（post/get）
@@ -49,6 +49,7 @@ function submitInformation(){
 			"color":color,
 			"driverName":driverName,
 			"driverPhone":driverPhone,
+			"status":2,
 			},//提交的数据
 			dataType: "json",//返回的数据类型格式
 			success: function(json){
@@ -74,8 +75,8 @@ function CarRentalStatement(){
 				data: {
 				"tourismId":tourismId},//提交的数据
 				dataType: "json",//返回的数据类型格式
-				success: function(msg){
-					if (msg.success){  //修改成功
+				success: function(json){
+					if (json.success){  //修改成功
 					   alert("结单成功") //修改成功处理代码...
 					}else {  //修改失败
 					   alert("结单失败") //修改失败处理代码...
@@ -83,21 +84,24 @@ function CarRentalStatement(){
 				}
 			});
 	}else{
-		alert("你取消了结单");
+		console.log("你取消了结单");
 	}
 }
 
 $(function(){
-//	$.ajax({
-//	type: 'POST',
-//	url: commentDataUrl,     //这里是请求的后台地址，自己定义
-//	data: {'tourism_id':tourism_id},
-//	dataType: 'json',
-//	success: function(json) {
-//		$('#license_plate_number').val(json.license_plate_number);
-//		$('#vehicle_type').val(json.vehicle_type);
-//		$('#color').val(json.color);
-//		$('#driver_name').val(json.driver_name);
-//		$('#driver_phone').val(json.driver_phone);
-//  }	
+	/*
+	$.ajax({
+	type: 'POST',
+	url: commentDataUrl,     //这里是请求的后台地址，自己定义
+	data: {'tourism_id':tourism_id},
+	dataType: 'json',
+	success: function(json) {
+	 	var dataContent=json.dataContent;
+		$('#license_plate_number').val(dataContent.licensePlateNumber);
+		$('#vehicle_type').val(dataContent.vehicleType);
+		$('#color').val(dataContent.color);
+		$('#driver_name').val(dataContent.driverName);
+		$('#driver_phone').val(dataContent.driverPhone);
+  }	
+  */
 })

@@ -40,7 +40,7 @@ function turnPage(page)
 		if(array['type']==2){
 			array['type']="预售"
 		}
-		data_html += "<div class='OnTheShelf'><ul><li>"+array['ruralCommittee']+"</li><li>"+array['departurePlace']+"</li><li>"+array['destination']+"</li><li>"+array['departureTime']+"</li><li>"+array['ReleaseTime']+"</li><li class='CenterVertically'>"+array['type']+"</li><li class='CenterVertically'>"+array['price']+"</li><li class='CenterVertically'>"+array['seatSurplus']+"</li><li class='CenterVertically'><a href='PurchaseDetails.html?ticketId="+array['ticketId']+"'>购票详情</a></li><li class='CenterVertically'><a href='VehicleEntry.html?tourismId="+array['ticketId']+"'>车辆信息</a></li><li class='CenterVertically'><a href='javaScript:ShelvesSubmit("+array['ticketId']+")'>下架</a></li></ul></div>";
+		data_html += "<div class='OnTheShelf'><ul><li>"+array['ruralCommittee']+"</li><li title='"+array['departurePlace']+"'>"+array['departurePlace']+"</li><li title='"+array['departurePlace']+"'>"+array['destination']+"</li><li>"+array['departureTime']+"</li><li>"+array['ReleaseTime']+"</li><li class='CenterVertically'>"+array['type']+"</li><li class='CenterVertically'>"+array['price']+"</li><li class='CenterVertically'>"+array['seatSurplus']+"</li><li class='CenterVertically'><a href='PurchaseDetails.html?ticketId="+array['ticketId']+"'>购票详情</a></li><li class='CenterVertically'><a href='VehicleEntry.html?tourismId="+array['ticketId']+"'>车辆信息</a></li><li class='CenterVertically'><a href='javaScript:ShelvesSubmit("+array['ticketId']+")'>下架</a></li></ul></div>";
 	   });
 	   $("#data-area").append(data_html);
 	},
@@ -124,7 +124,7 @@ function turnPageSecond(page)
 		if(array['type']==2){
 			array['type']="预售"
 		}
-		data_html += "<div class='OnTheShelf'><ul><li>"+array['ruralCommittee']+"</li><li>"+array['departurePlace']+"</li><li>"+array['destination']+"</li><li>"+array['departureTime']+"</li><li>"+array['ReleaseTime']+"</li><li class='CenterVertically'>"+array['type']+"</li><li class='CenterVertically'>"+array['price']+"</li><li class='CenterVertically'>"+array['seatSurplus']+"</li><li class='CenterVertically'><a href='PurchaseDetails.html?ticketId="+array['ticketId']+"'>购票详情</a></li><li class='CenterVertically'><a href='VehicleEntry.html?tourismId="+array['ticketId']+"'>车辆信息</a></li><li class='CenterVertically'>已下架</li></ul></div>";
+		data_html += "<div class='OnTheShelf'><ul><li>"+array['ruralCommittee']+"</li><li title='"+array['departurePlace']+"'>"+array['departurePlace']+"</li><li title='"+array['destination']+"'>"+array['destination']+"</li><li>"+array['departureTime']+"</li><li>"+array['ReleaseTime']+"</li><li class='CenterVertically'>"+array['type']+"</li><li class='CenterVertically'>"+array['price']+"</li><li class='CenterVertically'>"+array['seatSurplus']+"</li><li class='CenterVertically'><a href='PurchaseDetails.html?ticketId="+array['ticketId']+"'>购票详情</a></li><li class='CenterVertically'><a href='VehicleEntry.html?tourismId="+array['ticketId']+"'>车辆信息</a></li><li class='CenterVertically'>已下架</li></ul></div>";
 	  });
 	 $("#data-areaSecond").append(data_html);
 	},
@@ -209,7 +209,7 @@ function turnPage(page){
 	curPage=page;
 	getPageBar();
 	var json = {"TicketManagement":[
-	{"ruralCommittee":"丰顺同乡会","departurePlace":"广金","destination":"广金","departureTime":"2019-07-10 14:00","ReleaseTime":"2019-06-10 22:00","type":"1","seatSurplus":"13","price":"150","ticketId":"123132"},
+	{"ruralCommittee":"丰顺同乡会","departurePlace":"广金","destination":"广金","departureTime":"2019-07-10 14:00","ReleaseTime":"2019-06-10 22:00","type":"1","seatSurplus":"13","price":"150","ticketId":"123132"},{"ruralCommittee":"丰顺同乡会","departurePlace":"广金","destination":"广金","departureTime":"2019-07-10 14:00","ReleaseTime":"2019-06-10 22:00","type":"2","seatSurplus":"13","price":"150","ticketId":"123132"},
 	],"totalItem":"10","page":"1"
 	};  //测试数据
 	var data_content=json.TicketManagement;
@@ -229,7 +229,7 @@ function turnPage(page){
 		if(array['type']==2){
 			array['type']="预售"
 		}
-		data_html += "<div class='OnTheShelf'><ul><li>"+array['ruralCommittee']+"</li><li>"+array['departurePlace']+"</li><li>"+array['destination']+"</li><li>"+array['departureTime']+"</li><li>"+array['ReleaseTime']+"</li><li class='CenterVertically'>"+array['type']+"</li><li class='CenterVertically'>"+array['price']+"</li><li class='CenterVertically'>"+array['seatSurplus']+"</li><li class='CenterVertically'><a href='PurchaseDetails.html?ticketId="+array['ticketId']+"'>购票详情</a></li><li class='CenterVertically'><a href='VehicleEntry.html?tourismId="+array['ticketId']+"'>车辆信息</a></li><li class='CenterVertically'><a href='javaScript:ShelvesSubmit("+array['ticketId']+")'>下架</a></li></ul></div>";
+		data_html += "<div class='OnTheShelf'><ul><li>"+array['ruralCommittee']+"</li><li title='"+array['departurePlace']+"'>"+array['departurePlace']+"</li><li title='"+array['departurePlace']+"'>"+array['destination']+"</li><li>"+array['departureTime']+"</li><li>"+array['ReleaseTime']+"</li><li class='CenterVertically'>"+array['type']+"</li><li class='CenterVertically'>"+array['price']+"</li><li class='CenterVertically'>"+array['seatSurplus']+"</li><li class='CenterVertically'><a href='PurchaseDetails.html?ticketId="+array['ticketId']+"'>购票详情</a></li><li class='CenterVertically'><a href='VehicleEntry.html?tourismId="+array['ticketId']+"'>车辆信息</a></li><li class='CenterVertically'><a href='javaScript:ShelvesSubmit("+array['ticketId']+")'>下架</a></li></ul></div>";
 	  });
 	$("#data-area").append(data_html);
 };
@@ -262,7 +262,7 @@ function turnPageSecond(pageSecond){
 		if(array['type']==2){
 			array['type']="预售"
 		}
-		data_html += "<div class='OnTheShelf'><ul><li>"+array['ruralCommittee']+"</li><li>"+array['departurePlace']+"</li><li>"+array['destination']+"</li><li>"+array['departureTime']+"</li><li>"+array['ReleaseTime']+"</li><li class='CenterVertically'>"+array['type']+"</li><li class='CenterVertically'>"+array['price']+"</li><li class='CenterVertically'>"+array['seatSurplus']+"</li><li class='CenterVertically'><a href='PurchaseDetails.html?ticketId="+array['ticketId']+"'>购票详情</a></li><li class='CenterVertically'><a href='VehicleEntry.html?tourismId="+array['ticketId']+"'>车辆信息</a></li><li class='CenterVertically'>已下架</li></ul></div>";
+		data_html += "<div class='OnTheShelf'><ul><li>"+array['ruralCommittee']+"</li><li title='"+array['departurePlace']+"'>"+array['departurePlace']+"</li><li title='"+array['destination']+"'>"+array['destination']+"</li><li>"+array['departureTime']+"</li><li>"+array['ReleaseTime']+"</li><li class='CenterVertically'>"+array['type']+"</li><li class='CenterVertically'>"+array['price']+"</li><li class='CenterVertically'>"+array['seatSurplus']+"</li><li class='CenterVertically'><a href='PurchaseDetails.html?ticketId="+array['ticketId']+"'>购票详情</a></li><li class='CenterVertically'><a href='VehicleEntry.html?tourismId="+array['ticketId']+"'>车辆信息</a></li><li class='CenterVertically'>已下架</li></ul></div>";
 	  });
 	$("#data-areaSecond").append(data_html);
 };
