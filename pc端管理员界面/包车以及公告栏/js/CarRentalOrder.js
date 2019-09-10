@@ -1,6 +1,5 @@
 var curPage;        //当前页数
 var totalItem;      //总记录数
-var pageSize;       //每一页记录数
 var totalPage;      //总页数
 //获取分页数据
 $(function(){
@@ -17,30 +16,33 @@ function turnPage(page)
 	  $("#data-area").append("加载中...");
 	},
 	success: function(json) {
+	  console.log("请求租车订单第"+page+"页数据");
 	  $("#data-area").empty();       //移除原来的分页数据
-	  curPage = page;
+	  var data_content=json.CarRentalOrder;
 	  totalItem = json.totalItem;
+	  curPage = json.page;
 	  if(totalItem%11==0){			//每页11条数据
 		totalPage = parseInt(totalItem/11);
-		}
+	  }
 	  else{
-			totalPage = parseInt(totalItem/11)+1;
-		}
-	  var data_content=json.CarRentalOrder;
+		totalPage = parseInt(totalItem/11)+1;
+	  }
 	  var data_html = "";
-	  $.each(data_content,function(index,array) {     //添加新的分页数据（数据的显示样式根据自己页面来设置，这里只是一个简单的列表）
-		if(array['is_back']=="0"){
-			array['back_time']="无"
+	  $.each(data_content,function(index,array) {     //添加新的分页数据（数据的显示样式根据自己页面来设置，这里只是一个简单
+		if(array['isInsurance']=="0"){
+			array['isInsurance']="否"
 		}
-		if(array['is_insurance']=="0"){
-			array['is_insurance']="否"
+		else if(array['isInsurance']=="1"){
+			array['isInsurance']="是"
 		}
-		else if(array['is_insurance']=="1"){
-			array['is_insurance']="是"
+		if(array['isBack']=="0"){
+			data_html += "<div class='containerRentalOrder'><ul><li title="+array['departurePlace']+">"+array['departurePlace']+"</li><li title="+array['destination']+">"+array['destination']+"</li class='RentalOrderCenter'><li class='RentalOrderCenter'>"+array['travelNum']+"</li><li>"+array['departureTime']+"</li><li class='RentalOrderCenter'>无</li><li>"+array['vehicleType']+"</li><li class='RentalOrderCenter'>"+array['isInsurance']+"</li><li class='RentalOrderCenter'>"+array['username']+"</li><li>"+array['phone']+"</li><li class='RentalOrderCenter'><a href='vehicle-information-entry.html?tourismId="+array['tourismId']+"'>进入</a></li></ul></div>"; 
 		}
-		data_html += "<div class='containerRentalOrder'><ul><li title="+array['departure_place']+">"+array['departure_place']+"</li><li title="+array['destination']+">"+array['destination']+"</li class='RentalOrderCenter'><li class='RentalOrderCenter'>"+array['travel_num']+"</li><li>"+array['departureTime']+"</li><li>"+array['back_time']+"</li><li>"+array['vehicle_type']+"</li><li class='RentalOrderCenter'>"+array['is_insurance']+"</li><li class='RentalOrderCenter'>"+array['username']+"</li><li>"+array['phone']+"</li><li class='RentalOrderCenter'><a href='javascript:CarRentalStatement("+array['RentalCarId']+")'>进入</a></li></ul></div>"; 
-		 });
-		$("#data-area").append(data_html);
+		else{
+			data_html += "<div class='containerRentalOrder'><ul><li title="+array['departurePlace']+">"+array['departurePlace']+"</li><li title="+array['destination']+">"+array['destination']+"</li class='RentalOrderCenter'><li class='RentalOrderCenter'>"+array['travelNum']+"</li><li>"+array['departureTime']+"</li><li>"+array['backTime']+"</li><li>"+array['vehicleType']+"</li><li class='RentalOrderCenter'>"+array['isInsurance']+"</li><li class='RentalOrderCenter'>"+array['username']+"</li><li>"+array['phone']+"</li><li class='RentalOrderCenter'><a href='vehicle-information-entry.html?tourismId="+array['tourismId']+"'>进入</a></li></ul></div>"; 
+		}
+  	  });
+	  $("#data-area").append(data_html);
 	},
 	complete: function() {    //添加分页按钮栏
 	  getPageBar();
@@ -115,11 +117,12 @@ function CarRentalStatement(RentalCarId){
 //接上服务器后删掉
 getPageBar()
 function turnPage(page){
-    //$("#data-area").empty();       //移除原来的分页数据
+	console.log("请求租车订单第"+page+"页数据");
+    $("#data-area").empty();       //移除原来的分页数据
 	curPage=page;  
 	getPageBar();
 	var json = {"CarRentalOrder":[
-	{"departure_place":"广州市区广州市区广州市区","destination":"广金广金广金广金广金广金广金广金","travel_num":"50","departureTime":"2019-07-10 14:01","is_back":"0","back_time":"2019-07-11 14:01","username":"肖奈","phone":"13045612312","vehicle_type":"53座豪华大巴","is_insurance":"1","tourism_id":"123132"},
+	{"departurePlace":"广州市区广州市区广州市区","destination":"广金广金广金广金广金广金广金广金","travelNum":"50","departureTime":"2019-07-10 14:01","isBack":"0","backTime":"2019-07-11 14:01","username":"肖奈","phone":"13045612312","vehicleType":"53座豪华大巴","isInsurance":"1","tourismId":"123132"},
 	],"totalItem":"20","page":"1"
 	};  //测试数据   每页11条数据
 	var data_content=json.CarRentalOrder;
@@ -132,18 +135,19 @@ function turnPage(page){
 		totalPage = parseInt(totalItem/11)+1;
 	}
 	var data_html = "";
-	$.each(data_content,function(index,array) {     //添加新的分页数据（数据的显示样式根据自己页面来设置，这里只是一个简单的列表）
-		if(array['is_back']=="0"){
-			array['back_time']="无"
+	$.each(data_content,function(index,array) {     //添加新的分页数据（数据的显示样式根据自己页面来设置，这里只是一个简单
+		if(array['isInsurance']=="0"){
+			array['isInsurance']="否"
 		}
-		if(array['is_insurance']=="0"){
-			array['is_insurance']="否"
+		else if(array['isInsurance']=="1"){
+			array['isInsurance']="是"
 		}
-		else if(array['is_insurance']=="1"){
-			array['is_insurance']="是"
+		if(array['isBack']=="0"){
+			data_html += "<div class='containerRentalOrder'><ul><li title="+array['departurePlace']+">"+array['departurePlace']+"</li><li title="+array['destination']+">"+array['destination']+"</li class='RentalOrderCenter'><li class='RentalOrderCenter'>"+array['travelNum']+"</li><li>"+array['departureTime']+"</li><li class='RentalOrderCenter'>无</li><li>"+array['vehicleType']+"</li><li class='RentalOrderCenter'>"+array['isInsurance']+"</li><li class='RentalOrderCenter'>"+array['username']+"</li><li>"+array['phone']+"</li><li class='RentalOrderCenter'><a href='vehicle-information-entry.html?tourismId="+array['tourismId']+"'>进入</a></li></ul></div>"; 
 		}
-		<!--<a href='javascript:CarRentalStatement("+array['tourism_id']+")'>进入</a>  -->
-		data_html += "<div class='containerRentalOrder'><ul><li title="+array['departure_place']+">"+array['departure_place']+"</li><li title="+array['destination']+">"+array['destination']+"</li class='RentalOrderCenter'><li class='RentalOrderCenter'>"+array['travel_num']+"</li><li>"+array['departureTime']+"</li><li>"+array['back_time']+"</li><li>"+array['vehicle_type']+"</li><li class='RentalOrderCenter'>"+array['is_insurance']+"</li><li class='RentalOrderCenter'>"+array['username']+"</li><li>"+array['phone']+"</li><li class='RentalOrderCenter'><a href='vehicle-information-entry.html?tourism_id="+array['tourism_id']+"'>进入</a></li></ul></div>"; 
-		 });
+		else{
+			data_html += "<div class='containerRentalOrder'><ul><li title="+array['departurePlace']+">"+array['departurePlace']+"</li><li title="+array['destination']+">"+array['destination']+"</li class='RentalOrderCenter'><li class='RentalOrderCenter'>"+array['travelNum']+"</li><li>"+array['departureTime']+"</li><li>"+array['backTime']+"</li><li>"+array['vehicleType']+"</li><li class='RentalOrderCenter'>"+array['isInsurance']+"</li><li class='RentalOrderCenter'>"+array['username']+"</li><li>"+array['phone']+"</li><li class='RentalOrderCenter'><a href='vehicle-information-entry.html?tourismId="+array['tourismId']+"'>进入</a></li></ul></div>"; 
+		}
+	});
 	$("#data-area").append(data_html);
 };

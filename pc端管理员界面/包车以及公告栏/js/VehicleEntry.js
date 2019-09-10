@@ -33,11 +33,11 @@ function submitInformation(){
 			return false
 	}
 	else{
-		var license_plate_number=$('#license_plate_number').val();
-		var vehicle_type=$('#vehicle_type').val();
+		var licensePlateNumber=$('#license_plate_number').val();
+		var vehicleType=$('#vehicle_type').val();
 		var color=$('#color').val();
-		var driver_name=$('#driver_name').val();
-		var driver_phone=$('#driver_phone').val();
+		var driverName=$('#driver_name').val();
+		var driverPhone=$('#driver_phone').val();
 		if(confirm("车牌号 : "+license_plate_number+"\r"+"车辆类型 ："+vehicle_type+"\r"+"车身颜色 : "+color+"\r"+"司机姓名 : "+driver_name+"\r"+"司机联系方式 : "+driver_phone)){
 			$.ajax({
 			type: "post",  //数据提交方式（post/get）
@@ -61,13 +61,13 @@ function submitInformation(){
 			});
 		
 		}else{
-			alert("你取消了提交")
+			console.log("你取消了提交")
 		}
 	}
 }
 function CarRentalStatement(){
-	if(confirm("确定是否结单")){
-		alert("租车ID:"+tourism_id+"结单（接上数据库后删除）");  
+	if(confirm("确定是否下架")){
+		console.log("出行ID:"+tourismId+"下架（接上数据库后删除）");  
 		$.ajax({
 				type: "post",  //数据提交方式（post/get）
 				url: commentDataUrl,     //这里是请求的后台地址，自己定义
@@ -76,14 +76,14 @@ function CarRentalStatement(){
 				dataType: "json",//返回的数据类型格式
 				success: function(msg){
 					if (msg.success){  //修改成功
-					   alert("结单成功") //修改成功处理代码...
+					   alert("下架成功") //修改成功处理代码...
 					}else {  //修改失败
-					   alert("结单失败") //修改失败处理代码...
+					   alert("下架失败") //修改失败处理代码...
 					}
 				}
 			});
 	}else{
-		alert("你取消了结单");
+		console.log("你取消了结单");
 	}
 }
 
@@ -91,7 +91,7 @@ $(function(){
 //	$.ajax({
 //	type: 'POST',
 //	url: commentDataUrl,     //这里是请求的后台地址，自己定义
-//	data: {'tourism_id':tourism_id},
+//	data: {'tourismId':tourismId},
 //	dataType: 'json',
 //	success: function(json) {
 //		$('#license_plate_number').val(json.license_plate_number);

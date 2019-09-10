@@ -11,52 +11,11 @@
 
 	<!--公用部分css-->
 	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<!--我的发布css-->
+	<link rel="stylesheet" type="text/css" href="css/TicketManagement.css">
 	
 	<style>
-	.publicModelFrame_con .OnTheShelf{
-		width:616px;
-		margin:0 auto;
-		font-size:12px;
-	}
-	.publicModelFrame_con .OnTheShelf ul{
-		margin:0px 0 0 -24.5px;
-		width:585px;
-		color:#FFFFFF;
-		display:flex;
-	}
-	.OnTheShelf ul li{
-		width:58.5px;
-		height:33px;
-		list-style:none;
-		background-color:#ffffff;
-		color:#8fd68b;
-		text-align:center;
-		border-radius:5px;
-		
-		word-break: break-all;  
-		word-wrap:break-word;
-		-webkit-line-clamp: 2;
-		overflow: hidden;
-		display: -webkit-box;
-		-webkit-box-orient: vertical;
-		white-space: normal;
-	}
-	.OnTheShelf ul li a{
-		color:#8fd68b;
-		text-decoration:none;
-	}
-	.OnTheShelf ul li a:hover{
-		text-decoration:underline;
-	}
-	.OnTheShelfTitle ul li{
-		background-color:#8fd68b;
-		color:#FFFFFF;
-		height:20px;
-		line-height:20px;
-	}
-	.CenterVertically{
-		line-height:33px;
-	}
+	
 	</style>
 </head>
 <body>
@@ -93,6 +52,7 @@
 						<li>出发时间</li>
 						<li>发布时间</li>
 						<li>车票类型</li>
+						<li>售价</li>
 						<li>剩余票数</li>
 						<li>购票详情</li>
 						<li>车辆信息</li>
@@ -102,8 +62,6 @@
 				<div class="containerShelf">
 					<div id="data-area">
 					<!-- 最多4个
-						
-					-->
 					<div class="OnTheShelf">
 						<ul>
 							<li>汕头同乡会</li>
@@ -112,12 +70,14 @@
 							<li>2019-07-10 14:01</li>
 							<li>2019-05-10 14:01</li>
 							<li class="CenterVertically">正式</li>
+							<li class="CenterVertically">130</li>
 							<li class="CenterVertically">25</li>
-							<li class="CenterVertically"><a href="">购票详情</a></li>
-							<li class="CenterVertically"><a href="">车辆信息</a></li>
-							<li class="CenterVertically"><a href="">下架</a></li>
+							<li class="CenterVertically"><a href="PurchaseDetails.html?tourismId=2346732467328">购票详情</a></li>
+							<li class="CenterVertically"><a href="VehicleEntry.html?tourismId=2346732467328">车辆信息</a></li>
+							<li class="CenterVertically"><a href="javaScript:ShelvesSubmit(213612783687)">下架</a></li>
 						</ul>
 					</div>
+					-->
 					
 					</div>
 					<div class="pager pagination" id="pageBar">
