@@ -1,6 +1,5 @@
 jQuery.support.cors = true;
 var curPage;        //当前页数
-var totalItem;      //总记录数
 var totalPage;      //总页数
 
 turnPage(1);
@@ -39,7 +38,7 @@ $("#submitCommittee").click(function(){
 		if(confirm("车辆类型 : "+location+"\r定金 : "+ deposit)){
 			$.ajax({
 			type: "post",  //数据提交方式（post/get）
-			url: "http://easypoint.club/easyPoint_war/addNewVehicleInfo",     //这里是请求的后台地址，自己定义
+			url: "http://easypoint.club/easyPoint/addNewVehicleInfo",     //这里是请求的后台地址，自己定义
 			data: {
 			"vehicleType":location,
 			"deposit":deposit,
@@ -99,6 +98,7 @@ function turnPage(page)
 	  console.log("请求第"+page+"页车辆类型数据");
 	  var dataContent=json.data.vehicleInfoList; 
 	  totalPage = json.data.totalPage;
+	  curPage = page;
 	  var data_html = "";
 	  $.each(dataContent,function(index,array){  
 		data_html+="<ul class='VehicleContent'><li class='VehicleType'>"+array['vehicleType']+"</li><li class='deposit'>"+array['deposit']+"</li><li class='deleteButton'><a href='javaScript:deleteCommittee("+array['vehicleTypeId']+")'>删除</a></li></ul>"
