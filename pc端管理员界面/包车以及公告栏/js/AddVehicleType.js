@@ -72,9 +72,7 @@ $("#submitCommittee").click(function () {
 				success: function (json) {
 					console.log(json)
 					if (json.code == 200) {
-						alert("添加车辆类型成功");
-						$('#location').val('');
-						$('#deposit').val('');
+						console.log("添加类型类型成功");
 					} else if (json.code == 400) {
 						alert("该车辆类型已存在,请重新输入");
 					}
@@ -90,18 +88,17 @@ $("#submitCommittee").click(function () {
 	}
 })
 
-function deleteCommittee(vehicleId) {
+function deleteCommittee(vehicleTypeId) {
 	if (confirm("确定删除该车辆类型?")) {
-		console.log("删除该车辆类型:vehicleId为:" + vehicleId);
+		console.log("删除该车辆类型:vehicleTypeId为:" + vehicleTypeId);
 		$.ajax({
 			type: 'POST',
-			url: 'http://easypoint.club/deleteVehicleType', //这里是请求的后台地址，自己定义
+			url: commentDataUrl, //这里是请求的后台地址，自己定义
 			data: {
-				'vehicleId': vehicleId
+				'vehicleTypeId': vehicleTypeId
 			},
 			dataType: 'json',
 			success: function (json) {
-				console.log(json)
 				if (json.success) {
 					alert("删除成功");
 				}
@@ -115,7 +112,7 @@ function deleteCommittee(vehicleId) {
 function getMessage(data) {
 	var data_html = "";
 	$.each(data, function (index, array) {
-		data_html += "<ul class='VehicleContent'><li class='VehicleType'>" + array['vehicleType'] + "</li><li class='deposit'>" + array['deposit'] + "</li><li class='deleteButton'><a href='javaScript:deleteCommittee(" + array['vehicleId'] + ")'>删除</a></li></ul>"
+		data_html += "<ul class='VehicleContent'><li class='VehicleType'>" + array['vehicleType'] + "</li><li class='deposit'>" + array['deposit'] + "</li><li class='deleteButton'><a href='javaScript:deleteCommittee(" + array['vehicleTypeId'] + ")'>删除</a></li></ul>"
 	});
 	$("#centent").append(data_html);
 }
