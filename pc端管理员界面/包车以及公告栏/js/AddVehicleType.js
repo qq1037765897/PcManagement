@@ -95,7 +95,7 @@ function deleteCommittee(vehicleId) {
 		console.log("删除该车辆类型:vehicleId为:" + vehicleId);
 		$.ajax({
 			type: 'POST',
-			url: 'http://easypoint.club/deleteVehicleType', //这里是请求的后台地址，自己定义
+			url: 'http://easypoint.club/deleteVehicleType',
 			data: {
 				'vehicleId': vehicleId
 			},
